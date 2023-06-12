@@ -25,6 +25,35 @@ test('hex', () => {
   expect(sliceHex('0x0123456789', -5)).toMatchInlineSnapshot('"0x0123456789"')
   expect(slice('0x0123456789', -5)).toMatchInlineSnapshot('"0x0123456789"')
 
+  expect(
+    sliceHex(
+      '0x0001010060000000000000000000000000000000000000000000000000000000',
+      0,
+      2,
+    ),
+  ).toMatchInlineSnapshot('"0x0001"')
+  expect(
+    sliceHex(
+      '0x0001010060000000000000000000000000000000000000000000000000000000',
+      2,
+      1,
+    ),
+  ).toMatchInlineSnapshot('"0x01')
+  expect(
+    sliceHex(
+      '0x0001010060000000000000000000000000000000000000000000000000000000',
+      3,
+      1,
+    ),
+  ).toMatchInlineSnapshot('"0x00')
+  expect(
+    sliceHex(
+      '0x0001010060000000000000000000000000000000000000000000000000000000',
+      4,
+      1,
+    ),
+  ).toMatchInlineSnapshot('"0x60')
+
   expect(sliceHex('0x0123456789', 0, 10)).toMatchInlineSnapshot(
     '"0x0123456789"',
   )
